@@ -1,4 +1,4 @@
-import { MdLightMode, MdDarkMode } from "react-icons/md";
+import { MdDarkMode } from "react-icons/md"; //MdLightMode
 import styles from '../css/Header.module.css';
 
 export default function Header(){
