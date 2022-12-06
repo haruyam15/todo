@@ -4,3 +4,4 @@ li input[type=checkbox]{width: 15px;height:15px;margin-right:0.5rem;position: re
 li button{display:flex;align-items: center;justify-content: center;padding:0.2rem;color:#333;background:#eee;border-radius: 100%;font-size:1em;}
 
 li.completed{color:#999;text-decoration: line-through;}
+li.darkMode{color:#fff}

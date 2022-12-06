@@ -9,10 +9,19 @@ export default function TodoListProvider({children}){
 
     const [todoList, dispatch] = useReducer(todoListReducer, getTodoList());
     const [tabs, setTabs] = useState(getTabs());
+    const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('darkMode')) ? JSON.parse(localStorage.getItem('darkMode')) : false);
+
+    const darkModeToggle = () => {
+        setDarkMode((mode)=> !mode);
+    }
 
     useEffect(() => {
         localStorage.setItem('tabs', JSON.stringify(tabs));
     }, [tabs]);
+
+    useEffect(() => {
+        localStorage.setItem('darkMode', darkMode);
+    }, [darkMode]);
 
     const delTodo = (key) => {
         dispatch({type : 'delete', key});
@@ -46,7 +55,9 @@ export default function TodoListProvider({children}){
         addTodo,
         checking,
         setTab,
-        tabs
+        tabs,
+        darkMode,
+        darkModeToggle
     };
 
     function getTodoList(){

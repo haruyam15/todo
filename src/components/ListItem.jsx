@@ -6,7 +6,7 @@ import { TodoListContext } from '../context/TodoListContext';
 export default function ListItem({text, completed, id, del}){
     
     const [checked, setChecked] = useState(completed);
-    const checking = useContext(TodoListContext).checking;
+    const {checking, darkMode} = useContext(TodoListContext);
 
     const handleCheck = () => {
         setChecked((check)=>!check);
@@ -15,7 +15,7 @@ export default function ListItem({text, completed, id, del}){
 
     return(
         
-        <li className={completed ? styles.completed : null}>
+        <li className={`${completed ? styles.completed : ""} ${darkMode ? styles.darkMode : ""}`}>
             <div>
                 <input type="checkbox" name={id} id={id} checked={checked}  onChange={handleCheck}/>
                 <label htmlFor={id}>{text}</label>
