@@ -14,12 +14,14 @@ export default function ListItem({text, completed, id, del}){
     }
 
     return(
-        <li className={completed ? styles.completed : ''}>
+        
+        <li className={completed ? styles.completed : null}>
             <div>
                 <input type="checkbox" name={id} id={id} checked={checked}  onChange={handleCheck}/>
                 <label htmlFor={id}>{text}</label>
             </div>
             <button onClick={()=>del(id)}><MdDelete /></button>
         </li>
+
     )
 }

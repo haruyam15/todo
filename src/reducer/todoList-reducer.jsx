@@ -17,6 +17,8 @@ export default function todoListReducer(todoList, action){
             setStorage(newTodoList);
             return newTodoList;
         }
+        
+
         case 'delete' : {
             const key = action.key;
             newTodoList = newTodoList.filter((todo)=> todo.key !== key);
