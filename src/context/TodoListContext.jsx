@@ -1,14 +1,14 @@
-import { createContext, useReducer } from "react";
+import { toHaveDisplayValue } from "@testing-library/jest-dom/dist/matchers";
+import { getByDisplayValue } from "@testing-library/react";
+import { createContext, useEffect, useReducer } from "react";
 import todoListReducer from "../reducer/todoList-reducer";
 
 export const TodoListContext = createContext();
 
 export default function TodoListProvider({children}){
-    const todoInit = [
-        
-    ];
+    const todoInit = JSON.parse(localStorage.getItem('todoList'));
 
-    const [todoList, dispatch] = useReducer(todoListReducer, todoInit);
+    const [todoList, dispatch] = useReducer(todoListReducer, todoInit ? todoInit : []);
 
     const delTodo = (key) => {
         dispatch({type : 'delete', key});
@@ -18,10 +18,16 @@ export default function TodoListProvider({children}){
         dispatch({type : 'add', text, key})
     };
 
+
+    const checking = (checked, key) => {
+        dispatch({type: 'checking', checked, key})
+    }
+
     const data = {
         todoList,
         delTodo,
-        addTodo
+        addTodo,
+        checking
     };
      
     

@@ -11,13 +11,12 @@ const style = {
 
 export default function Content(){
     const {todoList, delTodo} = useContext(TodoListContext)
-
+    
     return(
         <ul style={style}>
             {
-                todoList.map((todo, index) => {
-                    return <ListItem key={todo.key} text={todo.text} completed={todo.completed} id={todo.key} del={delTodo} />
-                }
+                todoList.map((todo) => 
+                    <ListItem key={todo.key} text={todo.text} completed={todo.completed} id={todo.key} del={delTodo} />
                 )
             }
         </ul>
