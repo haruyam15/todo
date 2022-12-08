@@ -14,12 +14,16 @@ export default function Content(){
             return ({
                 padding : '1rem 0.7rem',
                 minHeight: '200px',
+                maxHeight: '500px',
+                overflowY: 'auto', 
                 background: '#333'
             })
         }
         return ({
             padding : '1rem 0.7rem',
             minHeight: '200px',
+            maxHeight: '500px',
+            overflowY: 'auto', 
             background: '#fff'
         })
     }

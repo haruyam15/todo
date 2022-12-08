@@ -16,5 +16,6 @@ a {color:#333}
 a, a:active, a:hover {text-decoration:none}
 address, caption, cite, code, dfn, em, var {font-style:normal;font-weight:400}
 
-html,body{width:100%;height:100%}
-body{display: flex;justify-content: center;align-items: center;background:#868da2}
+html,body, #root{width:100%;height:100%}
+body{background:#868da2}
+#root{display: flex;justify-content: center;align-items: center;}
