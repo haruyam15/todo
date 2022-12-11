@@ -5,7 +5,7 @@ import { useTodo } from '../context/TodoListContext';
 
 export default function Bottom(){
     const [text, setText] = useState('');
-    const addTodo = useTodo();
+    const {addTodo} = useTodo();
 
     const handleClick = () => {
         setText('');

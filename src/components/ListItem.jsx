@@ -6,7 +6,7 @@ import { useTodo } from '../context/TodoListContext';
 export default function ListItem({text, completed, id, del}){
     
     const [checked, setChecked] = useState(completed);
-    const checking = useTodo();
+    const {checking} = useTodo();
 
     const handleCheck = () => {
         setChecked((check)=>!check);
