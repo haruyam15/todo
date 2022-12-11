@@ -1,37 +1,26 @@
 
-import { useContext } from "react";
+import { useTodo } from "../context/TodoListContext";
 import ListItem from "./ListItem";
-import { TodoListContext } from "../context/TodoListContext";
 
 
 export default function Content(){
 
-    const {todoList, delTodo, tabs, darkMode} = useContext(TodoListContext);
+    const {todoList, delTodo, tabs} = useTodo();
     const selectedTab = tabs.filter((tab) => tab.selected)[0].name;
 
-    const style = ()=> {
-        if(darkMode){
-            return ({
-                padding : '1rem 0.7rem',
-                minHeight: '200px',
-                maxHeight: '500px',
-                overflowY: 'auto', 
-                background: '#333'
-            })
-        }
-        return ({
-            padding : '1rem 0.7rem',
-            minHeight: '200px',
-            maxHeight: '500px',
-            overflowY: 'auto', 
-            background: '#fff'
-        })
+    const style = {
+        padding : '1rem 0.7rem',
+        minHeight: '100px',
+        maxHeight: '500px',
+        overflowY: 'auto', 
+        background: 'var(--color-bg-white)',
     }
+
 
     switch (selectedTab) {
         case "All" : {
             return(
-                <ul style={style()}>
+                <ul style={style}>
                     {
                         todoList.map((todo) => 
                             <ListItem key={todo.key} text={todo.text} completed={todo.completed} id={todo.key} del={delTodo} />
@@ -43,7 +32,7 @@ export default function Content(){
 
         case "Active" : {
             return(
-                <ul style={style()}>
+                <ul style={style}>
                     {
                         todoList.filter((todo) => todo.completed === false).map((todo) => 
                             <ListItem key={todo.key} text={todo.text} completed={todo.completed} id={todo.key} del={delTodo} />
@@ -55,7 +44,7 @@ export default function Content(){
 
         case "Completed" : {
             return(
-                <ul style={style()}>
+                <ul style={style}>
                     {
                         todoList.filter((todo) => todo.completed === true).map((todo) => 
                             <ListItem key={todo.key} text={todo.text} completed={todo.completed} id={todo.key} del={delTodo} />

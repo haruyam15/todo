@@ -16,6 +16,21 @@ a {color:#333}
 a, a:active, a:hover {text-decoration:none}
 address, caption, cite, code, dfn, em, var {font-style:normal;font-weight:400}
 
-html,body, #root{width:100%;height:100%}
-body{background:#868da2}
-#root{display: flex;justify-content: center;align-items: center;}
+:root{
+    --color-bg: #eee;
+    --color-bg-white: #fff;
+    --color-accent: orange;
+    --color-text: #333;
+}
+html.darkMode {
+    --color-bg: #333;
+    --color-bg-white: #333;
+    --color-text: #fff;
+}
+
+html,body{width:100vw;height:100vh}
+body{background: #868da2;accent-color:var(--color-accent);display: flex;align-items: center;justify-content: center;}
+
+#root{width: 100%;height: 100%;display: flex;flex-direction:column;justify-content: center;}
+
+

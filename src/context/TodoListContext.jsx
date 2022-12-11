@@ -1,9 +1,9 @@
 import { toHaveDisplayValue } from "@testing-library/jest-dom/dist/matchers";
 import { getByDisplayValue } from "@testing-library/react";
-import { createContext, useReducer, useState, useEffect } from "react";
+import { createContext, useReducer, useState, useEffect, useContext } from "react";
 import todoListReducer from "../reducer/todoList-reducer";
 
-export const TodoListContext = createContext();
+const TodoListContext = createContext();
 
 export default function TodoListProvider({children}){
 
@@ -21,6 +21,12 @@ export default function TodoListProvider({children}){
 
     useEffect(() => {
         localStorage.setItem('darkMode', darkMode);
+        if(darkMode){
+            document.documentElement.classList.add('darkMode')
+        }else{
+            document.documentElement.classList.remove('darkMode')
+        }
+        
     }, [darkMode]);
 
     const delTodo = (key) => {
@@ -93,3 +99,6 @@ export default function TodoListProvider({children}){
         <TodoListContext.Provider value={data}>{children}</TodoListContext.Provider>
     )
 };
+
+
+export const useTodo = () => useContext(TodoListContext);

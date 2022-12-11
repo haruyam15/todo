@@ -1,11 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import { MdDarkMode } from "react-icons/md";
-import { MdLightMode } from "react-icons/md";
-import { TodoListContext } from "../context/TodoListContext";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { useTodo } from "../context/TodoListContext";
 import styles from '../css/Header.module.css';
 
 export default function Header(){
-    const {setTab, tabs, darkModeToggle, darkMode} = useContext(TodoListContext);
+    const {setTab, tabs, darkModeToggle, darkMode} = useTodo();
     
     const selectHandler = (e) => {
         setTab(e.target.textContent);
@@ -14,10 +12,9 @@ export default function Header(){
         darkModeToggle();
     }
 
-
     return(
-        <div className={`${styles.header} ${darkMode ? styles.darkMode : ""}`}>
-            <button onClick={darkModeHandler}>{darkMode ? <MdLightMode color="#fff" /> : <MdDarkMode />}</button> 
+        <div className={styles.header}>
+            <button onClick={darkModeHandler}>{darkMode ? <MdLightMode color="var(--color-text)" /> : <MdDarkMode />}</button> 
             <ul>
                 {
                     tabs.map((tab, key) => {

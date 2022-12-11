@@ -1,18 +1,25 @@
 import styles from '../css/Bottom.module.css';
 import shortid from 'shortid'
-import { useContext, useState } from 'react';
-import { TodoListContext } from '../context/TodoListContext';
+import { useState } from 'react';
+import { useTodo } from '../context/TodoListContext';
 
 export default function Bottom(){
     const [text, setText] = useState('');
-    const {addTodo, darkMode} = useContext(TodoListContext);
+    const addTodo = useTodo();
 
     const handleClick = () => {
-        addTodo(text, shortid.generate());
-        setText('')
+        setText('');
+
+        if(text.trim().length !== 0){
+            addTodo(text.split('  ').join(' '), shortid.generate());   
+            return;  
+        }
+
+        alert('Todo를 입력해주세요.');
+        
     }
     return(
-        <div className={`${styles.bottom} ${darkMode ? styles.darkMode : ""}`}>
+        <div className={styles.bottom}>
             <input type="text" name="inputAdd" id="inputAdd" placeholder='Add Todo' onChange={(e)=>setText(e.target.value)} value={text} onKeyPress={(e)=>{
                 if (e.key === 'Enter') handleClick();
             }} autoComplete="off" />

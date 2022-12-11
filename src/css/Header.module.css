@@ -1,8 +1,6 @@
 
-.header{display: flex;flex-direction: row;justify-content: space-between;padding:0.5rem;border-bottom:2px solid #ddd;background:#eee;border-radius:5px 5px 0 0;}
+.header{display: flex;flex-direction: row;justify-content: space-between;padding:0.5rem;border-bottom:2px solid #ddd;background:var(--color-bg);border-radius:5px 5px 0 0;}
 .header button{padding:0.5rem 1rem}
 .header ul{display: flex;flex-direction: row;justify-content: space-between;}
-.header ul li{padding:0.5rem 1rem;cursor: pointer;font-weight: bold;color:orange;position: relative;}
+.header ul li{padding:0.5rem 1rem;cursor: pointer;font-weight: bold;color:var(--color-accent);position: relative;}
 .header ul li.selected::after{content:'';display:block;width:100%;height:1px;border-top:2px solid #666;position:absolute;bottom:0;left:0}
-
-.header.darkMode{background-color: #333;}
