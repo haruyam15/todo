@@ -1,17 +1,15 @@
-import styles from '../css/Bottom.module.css';
+import styles from '../css/AddTodo.module.css';
 import shortid from 'shortid'
 import { useState } from 'react';
-import { useTodo } from '../context/TodoListContext';
 
-export default function Bottom(){
+export default function AddTodo({onadd}){
     const [text, setText] = useState('');
-    const {addTodo} = useTodo();
 
     const handleClick = () => {
         setText('');
 
         if(text.trim().length !== 0){
-            addTodo(text.split('  ').join(' '), shortid.generate());   
+            onadd(text.split('  ').join(' '), shortid.generate())
             return;  
         }
 
@@ -19,7 +17,7 @@ export default function Bottom(){
         
     }
     return(
-        <div className={styles.bottom}>
+        <div className={styles.addTodo}>
             <input type="text" name="inputAdd" id="inputAdd" placeholder='Add Todo' onChange={(e)=>setText(e.target.value)} value={text} onKeyPress={(e)=>{
                 if (e.key === 'Enter') handleClick();
             }} autoComplete="off" />

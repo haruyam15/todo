@@ -1,12 +1,12 @@
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import { useTodo } from "../context/TodoListContext";
+import { useDarkMode } from "../context/DarkModeContext";
 import styles from '../css/Header.module.css';
 
-export default function Header(){
-    const {setTab, tabs, darkModeToggle, darkMode} = useTodo();
+export default function Header({tabs, tabChanger}){
+    const {darkModeToggle, darkMode} = useDarkMode();
     
     const selectHandler = (e) => {
-        setTab(e.target.textContent);
+        tabChanger(e.target.textContent);
     }
     function darkModeHandler(){
         darkModeToggle();
@@ -18,7 +18,7 @@ export default function Header(){
             <ul>
                 {
                     tabs.map((tab, key) => {
-                        return <li className={tab.selected ? styles.selected : undefined} onClick={selectHandler} key={key}>{tab.name}</li>
+                        return <li className={tab.selected ? styles.selected : ""} onClick={selectHandler} key={key}>{tab.name}</li>
                     })
                 }
             </ul>
